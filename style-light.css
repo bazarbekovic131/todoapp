@@ -21,7 +21,6 @@ QPushButton {
 
 QPushButton:hover {
     background-color: #2980b9;
-    transition: 0.1s linear;
 }
 
 /* Line edit style */
@@ -49,6 +48,7 @@ QCheckBox::indicator {
     height: 16px;
     border-radius: 3px;
     background-color: #ffffff;
+    border: 1px solid #ccc;
 }
 
 QCheckBox::indicator:checked {
@@ -76,4 +76,20 @@ QScrollBar::sub-line:vertical, QScrollBar::add-line:vertical {
 /* Scroll bar sliders style */
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
     background: none;
+}
+
+/* Context menu style */
+QMenu {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+
+QMenu::item {
+    color: #000000;
+    padding: 5px 10px;
+}
+
+QMenu::item:selected {
+    background-color: #3498db;
+    color: #ffffff;
 }
