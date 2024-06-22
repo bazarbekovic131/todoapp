@@ -1,6 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QPushButton, QListWidget, QListWidgetItem, QCheckBox
-from PyQt5.QtCore import QFile, QTextStream, Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QPushButton, QListWidget, QListWidgetItem, QCheckBox, QMenu, QAction, QInputDialog
+from PyQt5.QtCore import QFile, QTextStream, Qt, QPoint
 import json
 import os
 import platform
@@ -26,6 +26,8 @@ class TaskListApp(QWidget):
 
         # Create a list widget to display tasks
         self.task_list = QListWidget()
+        self.task_list.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.task_list.customContextMenuRequested.connect(self.show_context_menu)
         layout.addWidget(self.task_list)
 
         self.setLayout(layout)
@@ -127,7 +129,34 @@ class TaskListApp(QWidget):
         except FileNotFoundError:
             pass
 
+    def show_context_menu(self, position):
+        menu = QMenu()
+        
+        edit_action = QAction("Edit", self)
+        delete_action = QAction("Delete", self)
+        
+        menu.addAction(edit_action)
+        menu.addAction(delete_action)
+        
+        edit_action.triggered.connect(lambda: self.edit_task(position))
+        delete_action.triggered.connect(lambda: self.delete_task(position))
+        
+        menu.exec_(self.task_list.viewport().mapToGlobal(position))
 
+    def edit_task(self, position):
+        item = self.task_list.itemAt(position)
+        if item:
+            checkbox = self.task_list.itemWidget(item)
+            new_text, ok = QInputDialog.getText(self, "Edit Task", "Task description:", QLineEdit.Normal, checkbox.text())
+            if ok and new_text:
+                checkbox.setText(new_text)
+                self.save_tasks()
+
+    def delete_task(self, position):
+        item = self.task_list.itemAt(position)
+        if item:
+            self.task_list.takeItem(self.task_list.row(item))
+            self.save_tasks()
 
 
 
