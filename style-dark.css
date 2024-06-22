@@ -1,0 +1,80 @@
+/* Apply the style to all widgets */
+* {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+/* Main window style */
+QMainWindow {
+    background-color: #2c3e50;
+}
+
+/* Push button style */
+QPushButton {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+}
+
+QPushButton:hover {
+    background-color: #2980b9;
+}
+
+/* Line edit style */
+QLineEdit {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #ffffff;
+    background-color: #34495e;
+}
+
+/* List widget style */
+QListWidget {
+    background-color: #34495e;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+QListWidgetItem {
+    color: #ffffff;
+}
+
+/* Checkboxes style */
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    background-color: #2c3e50;
+    border: 1px solid #ccc;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #3498db;
+    border: 1px solid #3498db;
+}
+
+/* Scroll bar style */
+QScrollBar:vertical {
+    width: 10px;
+    background: #2c3e50;
+}
+
+QScrollBar::handle:vertical {
+    background: #3498db;
+    border-radius: 5px;
+}
+
+/* Scroll bar arrows style */
+QScrollBar::sub-line:vertical, QScrollBar::add-line:vertical {
+    height: 0px;
+    background: none;
+}
+
+/* Scroll bar sliders style */
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
