@@ -55,6 +55,7 @@ QCheckBox::indicator {
 QCheckBox::indicator:checked {
     background-color: #3498db;
     border: 1px solid #3498db;
+    image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M20.29 5.71a1 1 0 00-1.42-1.42l-11 11a1 1 0 01-1.42 0l-3-3a1 1 0 00-1.42 1.42l3 3a3 3 0 004.24 0z"/></svg>');
 }
 
 /* Scroll bar style */
@@ -77,4 +78,19 @@ QScrollBar::sub-line:vertical, QScrollBar::add-line:vertical {
 /* Scroll bar sliders style */
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
     background: none;
+}
+
+/* Context menu style */
+QMenu {
+    background-color: #2c3e50;
+    border: 1px solid #3498db;
+}
+
+QMenu::item {
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+QMenu::item:selected {
+    background-color: #3498db;
 }
